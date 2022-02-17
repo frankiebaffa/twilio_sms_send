@@ -51,7 +51,7 @@ fn write_to_log(log_type: LogType, msg: impl AsRef<str>) {
         },
     };
     let mut path = PathBuf::from(log_dir);
-    let file_name = format!("{}.{}", BASE_NAME, now_short_fmt);
+    let file_name = format!("{}.{}.log", BASE_NAME, now_short_fmt);
     path.push(file_name);
     let mut file = match OpenOptions::new()
         .write(true)
@@ -83,7 +83,7 @@ fn error(msg: impl AsRef<str>) {
     write_to_log(LogType::Error, msg);
 }
 pub fn send(to: String, from: String, body: String) -> bool {
-    log(format!("Received request"));
+    log(format!("Beginning send"));
     const SID_KEY: &'static str = "TWILIO_SEND_SID";
     const TOKEN_KEY: &'static str = "TWILIO_SEND_TOKEN";
     const PROXY_KEY: &'static str = "TWILIO_SEND_PROXY";
