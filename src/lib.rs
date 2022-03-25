@@ -17,7 +17,7 @@ struct MessageRequest {
     body: String,
 }
 const LOG_DIR: &'static str = "TWILIO_SEND_LOG_DIR";
-const BASE_NAME: &'static str = "twilio_sms_send";
+const BASE_NAME: &'static str = "TWILIO_SEND_LOG_NAME";
 pub async fn send(to: String, from: String, body: String) -> bool {
     let ctx = LogContext::from_env(LOG_DIR, BASE_NAME);
     ctx.log(format!("Beginning send"));
